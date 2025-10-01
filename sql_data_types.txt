@@ -1,0 +1,39 @@
+Data Types in MySQL
+
+1. Numeric :
+   1.1 Integer - tinyInt(1Bytes) , smallInt(2Bytes), mediumInt(3Bytes), Int/Integer(4Bytes), BigInt(8 bytes)
+   1.2 fixed point - float(4 bytes) , double(8 bytes)
+   1.3 floating point - decimal(p,s) -> p means precision and s means numbers to be stored after decimal. 
+
+
+2. String :
+   2.1 char(n) - fixed length string , max length is 255 characters, right paded with spaces if smaller string is entered.
+   2.2 varchar(n) - actual size taken dependes on input string (+1-2 bytes) , thus better in terms of space in comparison to char. Limit is 65,535.
+   2.3 tinytext - store small text like comments or description , size 255 bytes.
+   2.4 text - store text inputs like posts and articles , 65,535 bytes is limit , and indexing does not work well with text type , works fine with varchar(n).
+   2.5 mediumtext - long blogs and long articles.
+   2.6 long text - document storage and larget text dumps.
+   2.7 enum("x","y","z") - same as enums in programming languages, only one of the enum values can be assigned to an entry.
+	2.7.7 text, mediumtext ,longtext are stored outside the table and associated using pointer.
+   2.8 set("x","y","z") - similar to enums but from 0 to all values in set , anything between this range can be assigend to an entry.
+
+
+
+3. Date and Time
+   3.1 Date - 3 bytes for yyyy-mm-dd format.
+   3.2 DateTime - 8 bytes for yyyy-mm-dd::h-m-s
+   3.3 TimeStamp - 4 bytes and same format as DateTime but store in UTC format , that is does automatically convert to and from to local utc format of the machine where data is being retrieved.
+   3.4 Time - 3 bytes in format in h.min.sec
+   3.5 year - 1 byte simply for year in yyyy format example -> 20002
+
+4. Binary Data types : very obvious , data is stored in binary format
+   4.1 bit(n) – store bit values (1–64), e.g. bit(1) = boolean (0/1).
+   4.2 binary(n) – fixed length binary string (max 255 bytes), padded with 0x00.
+   4.3 varbinary(n) – variable length binary string (max 65,535 bytes).
+	4.3.1 above data types are good for storing small keys , hash data.
+   4.4 tinyblob – small binary object, max 255 bytes.
+   4.5 blob – binary object up to 65,535 bytes (64 KB).
+   4.6 mediumblob – binary object up to 16,777,215 bytes (~16 MB).
+   4.7 longblob – binary object up to 4,294,967,295 bytes (~4 GB).
+        4.8.1– blob types are stored outside table with pointer reference (same as text types).
+        4.8.2 above data types are specifically used to store large files (videos , pdfs, pictures).
